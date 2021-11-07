@@ -19,9 +19,9 @@ namespace MinecraftServerManager
                         .AddSingleton<StartupCommand>()
                         .AddSingleton<DailyRefreshCommand>()
                         .AddSingleton<ShutdownCommand>()
-                        .AddSingleton<MinecraftClient>()
-                        .AddSingleton<DiscordBotClient>()
-                        .AddSingleton<DropboxClient>()
+                        .AddSingleton<AppMinecraftClient>()
+                        .AddSingleton<AppDiscordBotClient>()
+                        .AddSingleton<AppDropboxClient>()
                         .Configure<AppConfig>(context.Configuration);
                 })
                 .RunConsoleAppFrameworkAsync<Program>(args);

@@ -7,12 +7,12 @@ using Microsoft.Extensions.Options;
 
 namespace MinecraftServerManager.Services
 {
-    public class DiscordBotClient
+    public class AppDiscordBotClient
     {
         private const string ChannelName = "minecraft-management-log";
         private readonly IOptions<AppConfig> _config;
 
-        public DiscordBotClient(IOptions<AppConfig> config)
+        public AppDiscordBotClient(IOptions<AppConfig> config)
         {
             _config = config;
         }

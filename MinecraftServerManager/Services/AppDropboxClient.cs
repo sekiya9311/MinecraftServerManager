@@ -1,6 +1,6 @@
 ﻿namespace MinecraftServerManager.Services
 {
-    public class DropboxClient
+    public class AppDropboxClient
     {
     }
 }
