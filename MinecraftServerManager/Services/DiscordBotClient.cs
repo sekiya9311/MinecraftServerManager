@@ -23,8 +23,8 @@ namespace MinecraftServerManager.Services
             await client.LoginAsync(TokenType.Bot, _config.Value.DiscordBotAccessToken);
             try
             {
-                var guids = await client.GetGuildsAsync();
-                var tasks = guids.Select(g => SendMessageToHereAsync(g, message));
+                var guilds = await client.GetGuildsAsync();
+                var tasks = guilds.Select(g => SendMessageToHereAsync(g, message));
                 await Task.WhenAll(tasks);
             }
             finally
