@@ -2,7 +2,14 @@
 {
     public class AppConfig
     {
-        public string DropboxAccessToken { get; set; }
+        public class DropboxConfig
+        {
+            public string AppKey { get; set; }
+            public string AppSecret { get; set; }
+            public string RefreshToken { get; set; }
+        }
+
+        public DropboxConfig Dropbox { get; set; }
         public string DiscordBotAccessToken { get; set; }
         public string BedrockDirectory { get; set; }
     }
