@@ -1,10 +1,15 @@
-﻿namespace MinecraftServerManager.Commands
+﻿using System;
+
+namespace MinecraftServerManager.Commands
 {
     /// <summary>
     /// OS起動時: bedrock 起動
     /// </summary>
     public class StartupCommand
     {
-        public void Run(){}
+        public void Run()
+        {
+            Console.WriteLine("Call StartupCommand");
+        }
     }
 }

@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ConsoleAppFramework;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MinecraftServerManager.Commands;
+using MinecraftServerManager.Services;
 
 namespace MinecraftServerManager
 {
@@ -11,16 +13,22 @@ namespace MinecraftServerManager
         static async Task Main(string[] args)
         {
             await Host.CreateDefaultBuilder()
-                .ConfigureServices(services =>
+                .ConfigureServices((context, services) =>
                 {
                     services
                         .AddSingleton<StartupCommand>()
                         .AddSingleton<DailyRefreshCommand>()
-                        .AddSingleton<ShutdownCommand>();
+                        .AddSingleton<ShutdownCommand>()
+                        .AddSingleton<MinecraftClient>()
+                        .AddSingleton<DiscordBotClient>()
+                        .AddSingleton<DropboxClient>()
+                        .Configure<AppConfig>(context.Configuration);
                 })
                 .RunConsoleAppFrameworkAsync<Program>(args);
         }
 
+        public void Hello() => Console.WriteLine("Hello 👋");
+        
         [Command("startup", "Start Bedrock process.")]
         public void Startup() => Context.ServiceProvider.GetService<StartupCommand>().Run();
 
