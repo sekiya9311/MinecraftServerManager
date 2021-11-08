@@ -13,6 +13,13 @@ namespace MinecraftServerManager
         static async Task Main(string[] args)
         {
             await Host.CreateDefaultBuilder()
+                .UseEnvironment(
+#if DEBUG
+                    "Development"
+#else
+                    "Production"
+#endif
+                )
                 .ConfigureServices((context, services) =>
                 {
                     services
